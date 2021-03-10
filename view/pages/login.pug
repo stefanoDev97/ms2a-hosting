@@ -1,0 +1,31 @@
+extends ../home
+
+block content   
+  main.me
+    .ms2a__videobackground
+      #signup.ms2aa(dir='rtl' class=`${signup ? 'active': ''}`)
+        .ms2aa__container
+          .ms2aa__heading
+            h2.ms2aa__title انشاء حساب
+          form.ms2aa__form
+            ul.ms2aa__items
+              li.ms2aa__item: input.ms2aa__input(id='username' type='text' autocomplete="off" autocorrect="off" name="username" placeholder='اسم المستخدم')
+              li.ms2aa__item: input.ms2aa__input(id='email' type='text' autocomplete="off" autocorrect="off" name="email"  placeholder='البريد الالكتروني')
+              li.ms2aa__item: input.ms2aa__input(id='password' type='password' autocomplete="off" autocorrect="off" name="password"  placeholder='كلمة السر')
+              li.ms2aa__item: input.ms2aa__input(id='confirmpassword' type='password' autocomplete="off" autocorrect="off" name="confirmPassword"  placeholder='تأكيد كلمة السر')
+              li.ms2aa__item: button.ms2aa__button#ms2a__signup انشاء الحساب
+              .ms2aa__msg#signup__msg
+      #login.ms2aa(dir='rtl' class=`${signup ? '': 'active'}`)
+        .ms2aa__container
+          .ms2aa__heading
+            h2.ms2aa__title تسجيل الدخول
+          form.ms2aa__form
+            ul.ms2aa__items
+              li.ms2aa__item: input.ms2aa__input(id='emailL' type='text' autocomplete="off" autocorrect="off" name="emailL"  placeholder='البريد الالكتروني')
+              li.ms2aa__item: input.ms2aa__input(id='passwordL' type='password' autocomplete="off" autocorrect="off" name="passwordL"  placeholder='كلمة السر')
+              li.ms2aa__item: button.ms2aa__button#ms2a__login تسجيل الدخول
+              li.ms2aa__item
+                span.ms2aa__t هل نسيت كلمة السر ؟
+                a.ms2aa__t.resetPassword(href='/forgotPassword/false') اضغط هنا
+              .ms2aa__msg#login__msg
+block footer

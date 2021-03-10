@@ -1,0 +1,51 @@
+extends ../home
+block content 
+  section.videos
+    .container
+      .videos__title.section__title(dir="rtl")= ` مقاطع أعجبتني : `
+      ul.videos__content
+        each x in results
+          li.ms2a__videoLi
+            a(href=`/watch/${x.id}`)
+              .ms2a__video
+                .video__top
+                  img.ms2a__thumbnail(src=`/api/videos/stream/image/${x.image}`)
+                  .ms2a__videoC(unselectable="on" onselectstart="return false;" onmousedown="return false;")
+                    .ms2a__videoPlay
+                      span.ms2a__icon
+                        <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"></path></svg>
+                  .ms2a__videoLink
+                    .ms2a__videoC(unselectable="on" onselectstart="return false;" onmousedown="return false;")
+                  span.videoLength= `${x.duration ? x.duration : '00:00'}`
+                  if x.category == 'translated'
+                    span.videoTranslate مترجم
+                .video__bot
+                  .ms2a__title(dir="rtl")
+                    h2.ms2a__heading: .ms2a__headingLink= x.title
+                    .ms2a__vtd
+                      span=`${x.views} مشاهدة`
+                      span=x.dateOfCreation.toLocaleDateString()
+    //-   if  results.length != 0     
+    //-     .pagination__container(dir='rtl')
+    //-       if pagination <= 4
+    //-       else
+    //-         li.pagination__item.prev.btn: a.pagination__link
+    //-           <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g mirror-in-rtl="">
+    //-             <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+    //-           </g></svg> 
+    //-       .pagination__overflow
+    //-         ul.pagination
+    //-           - var x = 1;
+    //-           if pagination == 1
+    //-           else  
+    //-             while x <= pagination
+    //-                 if x == page
+    //-                     li.pagination__item: a.pagination__link.active(href=`pageNum&page=${x}`)= x++   
+    //-                 else          
+    //-                     li.pagination__item: a.pagination__link(href=`?page=${x}`)= x++ 
+    //-       if pagination <= 4
+    //-       else
+    //-         li.pagination__item.next.btn: a.pagination__link
+    //-           <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g mirror-in-rtl="">
+    //-               <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+    //-           </g></svg>            

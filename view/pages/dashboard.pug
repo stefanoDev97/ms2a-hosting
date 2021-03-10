@@ -1,0 +1,16 @@
+extends ../home
+
+block content
+  .video__block
+    ul.video__items
+      li.video__items: input.video__item.title(type="text" name="title" placeholder="title") 
+      li.video__items: input.video__item.auth(type="text" name="auth" placeholder="auth")  
+      li.video__items: input.video__item.category(type="text" name="category" placeholder="category")  
+      li.video__items: input.video__item.tag(type="text" name="tag" placeholder="tag") 
+      li.video__items: input.ms2aa__input.image(id='image' type='file' name="image" accept="image/*")
+      li.video__items: input.ms2aa__input.userphoto(id='video' type='file' name="video" accept="video/*")
+    button.createVideo upload
+  .uploadMessage
+  script( src="/js/dashboard.js")
+block footer
+block scripts

@@ -1,0 +1,51 @@
+header.header
+  .header__nav
+    .container
+      nav.navigation
+        h1.navigation__logo: a.navigation__logoLink(href="/")
+          span.navigation__logoLink--funny funny
+          span.navigation__logoLink--ms2a ms2a
+        .navigation__categories(dir="rtl")
+          h3.navigation__categories-title.navigation__link الفئات
+          ul.navigation__items
+            if user
+              li.navigation__item: a.navigation__link(href=`/likedvideos`) مقاطع اعجبتني
+            each cat in categories
+              li.navigation__item: a.navigation__link(href=`/category/${cat._id}`)=cat._id
+        form.navigation__search
+          input.navigation__searchBar(type="text" dir="rtl" tabindex="0" placeholder="ابحث باللغة العربية")
+          span.navigation__searchSubmit
+            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 50%; height: 50%;"><g>
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+            </g></svg>
+        if user 
+          .navigation__accountC
+            .navigation__account
+              a.navigation__link.navigation__logout تسجل الخروج
+            .navigation__account.me
+              a.navigation__link(href="/me")
+                img(src=`/api/videos/stream/image/${user ? user.photo : "user-photo"}`)
+        else
+          .navigation__account
+            a.navigation__link.navigation__login(href="/ms2a") تسجيل الدخول
+            a.navigation__link.navigation__register(href="/ms2a?new=true") اشترك مجانا
+        .navigation__menuBar
+          .navigation__rt
+            .navigation__menuBar--span
+          .navigation__account(class=`${user? 'me':''}`)
+            if user 
+              a.navigation__link(href="/me")
+                img(src=`/api/videos/stream/image/${user ? user.photo : "user-photo"}`)
+              .bm-aqs
+                a.navigation__link.navigation__logout تسجل الخروج
+
+            else
+              a.navigation__link.navigation__login(href="/ms2a") تسجيل الدخول
+              a.navigation__link.navigation__register(href="/ms2a?new=true") اشترك مجانا
+            .navigation__menuBar-cat
+              h3.navigation__link الفئات
+              ul.navigation__items
+                if user
+                  li.navigation__item: a.navigation__link(href=`/likedvideos`) مقاطع اعجبتني
+                each cat in categories
+                  li.navigation__item: a.navigation__link(href=`/videos/${cat._id}`)=cat._id

@@ -1,0 +1,203 @@
+extends ../home
+block stripe
+  script(src="https://js.stripe.com/v3/")
+block content
+  section.video
+    .video__player(id='video')
+      .video__player-landSC
+        video(id="video__viewer" class="video__viewer" src=`/api/videos/stream/video/${video.id}`)
+        .video__contols
+          .video__progress
+            .video__progress--filled
+            .video__progress--p
+          .video__contols--left
+            .video__volume.flex1
+              span.video__volume--icon
+                <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><defs><clipPath><path d="m 14.35,-0.14 -5.86,5.86 20.73,20.78 5.86,-5.91 z"></path><path d="M 7.07,6.87 -1.11,15.33 19.61,36.11 27.80,27.60 z"></path><path d="M 9.09,5.20 6.47,7.88 26.82,28.77 29.66,25.99 z" transform="translate(0, 0)"></path></clipPath><clipPath ><path d="m -11.45,-15.55 -4.44,4.51 20.45,20.94 4.55,-4.66 z" transform="translate(0, 0)"></path></clipPath></defs><path  d="M8,21 L12,21 L17,26 L17,10 L12,15 L8,15 L8,21 Z M19,14 L19,22 C20.48,21.32 21.5,19.77 21.5,18 C21.5,16.26 20.48,14.74 19,14 ZM19,11.29 C21.89,12.15 24,14.83 24,18 C24,21.17 21.89,23.85 19,24.71 L19,26.77 C23.01,25.86 26,22.28 26,18 C26,13.72 23.01,10.14 19,9.23 L19,11.29 Z" fill="#fff" ></path><path d="M 9.25,9 7.98,10.27 24.71,27 l 1.27,-1.27 Z" fill="#fff" style="display: none;"></path></svg>  
+              .video__volume--slider
+                .video__volume--progress
+            .video__length
+              .video__length-current 0:00
+              .video__length-slash /
+              .video__length-length 0:00
+          .flex1.video__param 
+            .video__resolutionI
+              <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><path d="m 23.94,18.78 c .03,-0.25 .05,-0.51 .05,-0.78 0,-0.27 -0.02,-0.52 -0.05,-0.78 l 1.68,-1.32 c .15,-0.12 .19,-0.33 .09,-0.51 l -1.6,-2.76 c -0.09,-0.17 -0.31,-0.24 -0.48,-0.17 l -1.99,.8 c -0.41,-0.32 -0.86,-0.58 -1.35,-0.78 l -0.30,-2.12 c -0.02,-0.19 -0.19,-0.33 -0.39,-0.33 l -3.2,0 c -0.2,0 -0.36,.14 -0.39,.33 l -0.30,2.12 c -0.48,.2 -0.93,.47 -1.35,.78 l -1.99,-0.8 c -0.18,-0.07 -0.39,0 -0.48,.17 l -1.6,2.76 c -0.10,.17 -0.05,.39 .09,.51 l 1.68,1.32 c -0.03,.25 -0.05,.52 -0.05,.78 0,.26 .02,.52 .05,.78 l -1.68,1.32 c -0.15,.12 -0.19,.33 -0.09,.51 l 1.6,2.76 c .09,.17 .31,.24 .48,.17 l 1.99,-0.8 c .41,.32 .86,.58 1.35,.78 l .30,2.12 c .02,.19 .19,.33 .39,.33 l 3.2,0 c .2,0 .36,-0.14 .39,-0.33 l .30,-2.12 c .48,-0.2 .93,-0.47 1.35,-0.78 l 1.99,.8 c .18,.07 .39,0 .48,-0.17 l 1.6,-2.76 c .09,-0.17 .05,-0.39 -0.09,-0.51 l -1.68,-1.32 0,0 z m -5.94,2.01 c -1.54,0 -2.8,-1.25 -2.8,-2.8 0,-1.54 1.25,-2.8 2.8,-2.8 1.54,0 2.8,1.25 2.8,2.8 0,1.54 -1.25,2.8 -2.8,2.8 l 0,0 z" fill="#fff"></path></svg>
+            .video__fullS
+              span.video__fullS--btn
+                <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><g><path  d="m 10,16 2,0 0,-4 4,0 0,-2 L 10,10 l 0,6 0,0 z" ></path></g><g><path d="m 20,10 0,2 4,0 0,4 2,0 L 26,10 l -6,0 0,0 z" ></path></g><g><path d="m 24,24 -4,0 0,2 L 26,26 l 0,-6 -2,0 0,4 0,0 z" ></path></g><g ><path  d="M 12,20 10,20 10,26 l 6,0 0,-2 -4,0 0,-4 0,0 z" ></path></g></svg>
+        .flex2.video__playC.flex
+          .video__skipping.video__skipping-left.flex(data-skip='-5')
+            <svg  viewBox="0 0 60 60" sodipodi:version="0.32" version="1.0" y="0" x="0" inkscape:version="0.40" >
+            <path style="stroke-linejoin:round;fill-rule:evenodd;color:#000000;stroke:#000000;stroke-linecap:round;stroke-width:6.8532;fill:#ffffff" transform="matrix(2.1502e-7 .96052 -.55418 2.5249e-7 23.132 67.647)" d="m-19.355 10.964h-39.68l19.84-34.364 19.84 34.364z"/>
+            <path style="stroke-linejoin:round;fill-rule:evenodd;color:#000000;stroke:#000000;stroke-linecap:round;stroke-width:6.8532;fill:#ffffff" transform="matrix(2.1502e-7 .96052 -.55418 2.5249e-7 38.132 67.647)" d="m-19.355 10.964h-39.68l19.84-34.364 19.84 34.364z"/>
+            </svg>
+          .video__play.flex
+            .video__playSVG
+              <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z" ></path></svg>
+          .video__skipping.video__skipping-right.flex(data-skip='5')
+            <svg  viewBox="0 0 60 60" sodipodi:version="0.32" version="1.0" y="0" x="0" inkscape:version="0.40" >
+            <path style="stroke-linejoin:round;fill-rule:evenodd;color:#000000;stroke:#000000;stroke-linecap:round;stroke-width:6.8532;fill:#ffffff" transform="matrix(2.1502e-7 .96052 -.55418 2.5249e-7 23.132 67.647)" d="m-19.355 10.964h-39.68l19.84-34.364 19.84 34.364z"/>
+            <path style="stroke-linejoin:round;fill-rule:evenodd;color:#000000;stroke:#000000;stroke-linecap:round;stroke-width:6.8532;fill:#ffffff" transform="matrix(2.1502e-7 .96052 -.55418 2.5249e-7 38.132 67.647)" d="m-19.355 10.964h-39.68l19.84-34.364 19.84 34.364z"/>
+            </svg>
+        .video__seking
+          .video__spin.video__spin1
+          .video__spin.video__spin2
+    .video__contentFlex.container
+      .video__left
+        .video__next
+          .video__auto-play
+            .video__checkbox.active
+              span.video__checkbox-circle
+            span.video__span تشغيل تلقائي
+          .video__next-video
+            span.video__span التالي
+        ul.videos__content.video
+          .video__nextVideo(id="nextVideoC")
+            li.ms2a__videoLi
+              a.ms2a__videoLink(href=`/watch/${results[0].id}`)
+                .ms2a__video
+                  .video__top
+                    img.ms2a__thumbnail(src=`/api/videos/stream/image/${results[0].image}`)
+                    .ms2a__videoC
+                      .ms2a__videoPlay
+                        span.ms2a__icon
+                    .ms2a__videoLink
+                      .ms2a__videoC
+                    span.videoLength=results[0].duration
+                    if results[0].translate
+                      span.videoTranslate مترجم
+                  .video__bot
+                    .ms2a__title(dir="rtl")
+                      h2.ms2a__heading= results[0].title
+                      .ms2a__vtd
+                        span=`${results[0].views} مشاهدة`
+                        span=results[0].dateOfCreation.toLocaleDateString()
+          each x, i in results
+            if i == 0
+            else if x.src720 == video.src720
+            else
+              li.ms2a__videoLi
+                a.ms2a__videoLink(href=`/img/default_img.jpg`)
+                  .ms2a__video
+                    .video__top
+                      img.ms2a__thumbnail(src=`/api/videos/stream/image/${x.image}`)
+                      .ms2a__videoC
+                        .ms2a__videoPlay
+                          span.ms2a__icon
+                      .ms2a__videoLink
+                        .ms2a__videoC
+                      span.videoLength=x.duration
+                      if x.translate
+                        span.videoTranslate مترجم
+                    .video__bot
+                      .ms2a__title(dir="rtl")
+                        h2.ms2a__heading= x.title
+                        .ms2a__vtd
+                          span=`${x.views} مشاهدة`
+                          span=x.dateOfCreation.toLocaleDateString()
+      .video__rigth(dir="rtl")
+        .video__block.flexy
+          h3.video__title=video.title
+          if user
+            if user.subscribe
+            else
+              .noAds حذف الاعلانات
+          else
+            .noAds حذف الاعلانات
+        .video__block
+          .video__info
+            .video__infoC
+              .video__info-hor.video__like-dislike
+                .video__container
+                  if user
+                    button.video__button.video__like( class= `${user.liked_videos.includes(video.id) ? 'active' : ''}` )
+                      svg( viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;" )
+                        path( d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" )
+                  else
+                    button.video__button.video__like
+                      svg( viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;" )
+                        path( d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" )
+                  span.video__span.video__likes=video.likes
+                .video__container
+                  if user
+                    button.video__button.video__dislike(class= `${user.disliked_videos.includes(video.id) ? 'active' : ''}` )
+                      svg( viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;" )
+                        path( d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z")
+                  else 
+                    button.video__button.video__dislike
+                      svg( viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;" )
+                        path( d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z")
+                  span.video__span.video__dislikes=video.Dislikes
+              .video__info-hor.video__share-later
+                .video__container.video__share
+                  button.video__button
+                    svg( viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;")
+                      path( d="M11.7333 8.26667V4L19.2 11.4667L11.7333 18.9333V14.56C6.4 14.56 2.66667 16.2667 0 20C1.06667 14.6667 4.26667 9.33333 11.7333 8.26667Z")
+                  span.video__span شارك المقطع مع اصدقائك
+                .video__share-placeholder
+                  .video__share-placeholderCo
+                    .video__share-placeholderCl
+                      span شارك المقطع
+                      span.s
+                        <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g>
+                          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                        </g></svg>
+                    .flex
+                      .video__share__t
+                        <svg viewBox="0 0 60 60" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g>
+                          <g fill="none" fill-rule="evenodd">
+                            <path d="M28.486325 59.969298c-6.636404-.569063-11.56302-2.326956-16.321973-5.823932C4.443764 48.472116 0 39.646792 0 29.986934 0 15.11156 10.506778 2.798388 25.274412.36718c6.028107-.992411 12.703853.049265 18.28794 2.85363 13.576275 6.818095 19.7813 22.541053 14.64267 37.103159-3.527955 9.997705-12.789708 17.617785-23.391072 19.244938-2.085625.320112-5.065149.508645-6.327625.400391z" fill="#1DA1F2" fill-rule="nonzero"></path>
+                            <path d="M45.089067 17.577067c-.929778.595555-3.064534 1.460977-4.117334 1.460977v.001778C39.7696 17.784 38.077156 17 36.200178 17c-3.645511 0-6.6016 2.956089-6.6016 6.600178 0 .50631.058666 1.000178.16711 1.473778h-.001066c-4.945066-.129778-10.353422-2.608356-13.609244-6.85049-2.001778 3.46489-.269511 7.3184 2.002133 8.72249-.7776.058666-2.209067-.0896-2.882844-.747023-.045156 2.299734 1.060622 5.346845 5.092622 6.452267-.776533.417778-2.151111.297956-2.7488.209067.209778 1.941333 2.928355 4.479289 5.901155 4.479289C22.46009 38.565156 18.4736 40.788089 14 40.080889 17.038222 41.929422 20.5792 43 24.327111 43c10.650667 0 18.921956-8.631822 18.4768-19.280356-.001778-.011733-.001778-.023466-.002844-.036266.001066-.027378.002844-.054756.002844-.0832 0-.033067-.002844-.064356-.003911-.096356.9696-.66311 2.270578-1.836089 3.2-3.37991-.539022.296888-2.156089.891377-3.6608 1.038932.965689-.521244 2.396444-2.228266 2.749867-3.585777" fill="#FFF"></path>
+                          </g>
+                        </g></svg>
+                      .video__share__f
+                        <svg viewBox="0 0 60 60" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g>
+                          <g fill="none" fill-rule="evenodd">
+                            <path d="M28.4863253 59.9692983c-6.6364044-.569063-11.5630204-2.3269561-16.3219736-5.8239327C4.44376366 48.4721168 3e-7 39.6467924 3e-7 29.9869344c0-14.8753747 10.506778-27.18854591 25.2744118-29.61975392 6.0281072-.9924119 12.7038532.04926445 18.2879399 2.85362966C57.1386273 10.0389054 63.3436516 25.7618627 58.2050229 40.3239688 54.677067 50.3216743 45.4153135 57.9417536 34.81395 59.5689067c-2.0856252.3201125-5.0651487.5086456-6.3276247.4003916z" fill="#3B5998" fill-rule="nonzero"></path>
+                            <path d="M25.7305108 45h5.4583577V30.0073333h4.0947673l.8098295-4.6846666h-4.9045968V21.928c0-1.0943333.7076019-2.2433333 1.7188899-2.2433333h2.7874519V15h-3.4161354v.021c-5.3451414.194-6.4433395 3.2896667-6.5385744 6.5413333h-.0099897v3.7603334H23v4.6846666h2.7305108V45z" fill="#FFF"></path>
+                          </g>
+                        </g></svg>
+                    .video__share__l
+                      .video__share__lP تم نسخ الرابط
+                      span اضغط على الرابط للنسخ : 
+                      | 
+                      input(id="shareLink" type="text" value=`ms2afunny.com${sharedlink}` )
+            .video__infoC.ms
+              .video__info-hor.video__views
+                .video__container
+                  span.video__span.video__views=`${video.views} مشاهدة`
+                  span.video__span.video__date=video.dateOfCreation.toLocaleDateString()
+              if video.auth
+                .video__info-hor.video__auth
+                  .video__container
+                    span.video__span=`صاحب المقطع : ${video.auth}`
+        .video__block
+          .video__comments-show
+            .video__comments-info
+              .video__R
+                span.video__span.video__comments-info--inc=comments.length
+                | 
+                span.video__span=`تعليق`
+              .video__L
+                <svg viewBox="0 0 24 24" fill=""><path d="M16.59 9.41L18 8l-6-6-6 6 1.41 1.41L12 4.83l4.59 4.58zM12 19.17l-4.59-4.58L6 16l6 6 6-6-1.41-1.41L12 19.17z"></path></svg>
+
+          .video__comments
+            .video__comments-containerT
+              .video__comments-info.video__comments-infoP
+                .video__R
+                  span.video__span.video__comments-info--inc= comments.length
+                  | 
+                  span.video__span=`تعليق`
+                .video__L
+                  <svg viewBox="0 0 24 24" fill=""><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+              .video__comments-add
+                .video__user
+                  img.video__user-image.video__user-image-current(src=`/api/videos/stream/image/${user ? user.photo : "user-photo"}`)
+                .video__comments-input
+                  input(type='text' placeholder="أكتب تعليق")
+                  span.video__comments-post تعليق
+                  span.alertEr أكتب تعليق...
+            .video__comments-container
+              each comment in comments
+                +comment(comment)

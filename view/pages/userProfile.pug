@@ -1,0 +1,23 @@
+extends ../home
+
+block content   
+  main.me
+    .ms2a__videobackground
+      .ms2aa.me(dir='rtl' class=`${signup ? 'active': ''}`)
+        .ms2aa__container
+          .ms2aa__heading
+            h2.ms2aa__title الملف الشخصي
+          form.ms2aa__form(id="ms2aa__formMe")
+            ul.ms2aa__items
+              li.ms2aa__item: input.ms2aa__input(id='username' type='text' autocomplete="off" autocorrect="off" name="username" placeholder='اسم المستخدم' value=`${user.name}`)
+              li.ms2aa__item: button.ms2aa__button.cn تغيير الاسم
+              li.ms2aa__item
+                #user-image.ms2aa__imgplace
+                  img.ms2aa__image.userphoto(src=`/api/videos/stream/image/${user.photo}`)
+                  input.ms2aa__input.userphoto(id='photo' type='file' name="photo" accept="image/*")
+              li.ms2aa__item: input.ms2aa__input(id='password' type='password' autocomplete="off" autocorrect="off" name="password"  placeholder='كلمة السر الحالية')
+              li.ms2aa__item: input.ms2aa__input(id='newpassword' type='password' autocomplete="off" autocorrect="off" name="newpassword"  placeholder='كلمة السر الجديدة')
+              li.ms2aa__item: input.ms2aa__input(id='confirmpassword' type='password' autocomplete="off" autocorrect="off" name="confirmPassword"  placeholder='تأكيد كلمة السر')
+              li.ms2aa__item: button.ms2aa__button.cp تحديث كلمة السر
+              .ms2aa__msg#signup__msg
+block footer

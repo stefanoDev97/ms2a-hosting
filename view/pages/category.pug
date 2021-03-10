@@ -1,0 +1,32 @@
+extends ../home
+
+block content
+  section.videos
+    .container
+      .videos__title.section__title(dir="rtl")= ` مقاطع : ${category}`
+      .videocontent__conteainer
+        ul.videos__content
+          each x in results
+            li.ms2a__videoLi
+              a(href=`/watch/${x.id}`)
+                .ms2a__video
+                  .video__top
+                    img.ms2a__thumbnail(src=`/api/videos/stream/image/${x.image}`)
+                    .ms2a__videoC(unselectable="on" onselectstart="return false;" onmousedown="return false;")
+                      .ms2a__videoPlay
+                        span.ms2a__icon
+                          <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"></path></svg>
+                    .ms2a__videoLink
+                      .ms2a__videoC(unselectable="on" onselectstart="return false;" onmousedown="return false;")
+                    span.videoLength= `${x.duration ? x.duration : '00:00'}`
+                    if x.category == 'translated'
+                      span.videoTranslate مترجم
+                  .video__bot
+                    .ms2a__title(dir="rtl")
+                      h2.ms2a__heading: .ms2a__headingLink= x.title
+                      .ms2a__vtd
+                        span=`${x.views} مشاهدة`
+                        span=x.dateOfCreation.toLocaleDateString()
+      if moreV
+        .flexy
+          .moreVideos.hover(data-edi="2" id="moreVideos") مزيد من المقاطع
