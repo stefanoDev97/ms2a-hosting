@@ -11,6 +11,7 @@ const rateLimit = require("express-rate-limit");
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const xss = require('xss-clean');
+const compression = require('compression');
 const path = require('path');
 const app = express();
 
@@ -24,6 +25,8 @@ app.use(express.json());
 app.use(express.static(path.join(`${__dirname}/public`)));
 //cookie-parser
 app.use(cookieParser());
+//compression
+app.use(compression());
 // To remove data sanitazetion
 app.use(mongoSanitize());
 //clean xss

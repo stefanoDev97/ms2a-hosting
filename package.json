@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon server.js",
     "watch:js": "parcel watch ./public/js/ms2afunny.js --no-hmr --out-dir ./public/js --out-file ms2a.js --no-hmr ",
-    "watch:dash": "parcel watch ./public/js/dash.js --no-hmr --out-dir ./public/js --out-file dashboard.js --no-hmr "
+    "watch:dash": "parcel watch ./public/js/dash.js --no-hmr --out-dir ./public/js --out-file dashboard.js --no-hmr ",
+    "build:js": "parcel build ./public/js/ms2afunny.js --out-dir ./public/js --out-file ms2a.js ",
+    "build:dash": "parcel build ./public/js/dash.js  --out-dir ./public/js --out-file dashboard.js  "
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +20,7 @@
     "aws-sdk": "^2.747.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
