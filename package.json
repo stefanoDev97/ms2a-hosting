@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "watch:js": "parcel watch ./public/js/ms2afunny.js --no-hmr --out-dir ./public/js --out-file ms2a.js --no-hmr ",
     "watch:dash": "parcel watch ./public/js/dash.js --no-hmr --out-dir ./public/js --out-file dashboard.js --no-hmr ",
     "build:js": "parcel build ./public/js/ms2afunny.js --out-dir ./public/js --out-file ms2a.js ",
